@@ -33,7 +33,7 @@ backend F_jaaku_test {
       }
 }
 sub vcl_deliver {
-    set resp.http.AAA = "bbb";
+    set resp.http.AAA = "bbb1";
     set resp.http.X-Original-Body = req.http.X-Request-Body;
     set resp.http.HOGE = req.body;
 }
