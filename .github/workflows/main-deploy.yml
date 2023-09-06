@@ -17,9 +17,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: diff
-      run: changed_files=$(git diff --name-only HEAD^ HEAD)
-          changed_files=$(echo $changed_files | tr '\n' ',')
+    - name: Get list of changed files
+      id: getfile
+      run: |
+        echo "Changed files:"
+        git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+        files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs)
+        echo "changed_files=${files}" >> $GITHUB_ENV
     - name: test
       run: echo $changed_files
     
