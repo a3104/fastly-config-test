@@ -5,31 +5,32 @@ on:
     branches:
       - main
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     env: # 環境変数としてシークレットを設定
       TOKEN: ${{ secrets.TOKEN }}
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # fetch all history so diffs can be computed
 
     - name: Get list of changed files
-      id: getfile
       run: |
         echo "Changed files:"
-        git diff --name-only ${{ github.event.before }} ${{ github.sha }}
-        files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs)
-        echo "changed_files=${files}" >> $GITHUB_ENV
-    - name: test
-      run: echo $changed_files
-    
-    - name: Install jq
-      run: sudo apt update; sudo apt -y install jq curl
+        changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs)
+        echo "Changed files are $changed_files"
+        echo "changed_files=$changed_files" >> $GITHUB_ENV
 
-    - name: deploy to fastly
-      run: ls; 
+    - name: Print list of changed files
+      run: echo "List of changed files: $changed_files"
+
+    - name: Install jq
+      run: sudo apt update && sudo apt install -y jq curl
+
+    - name: Deploy to fastly
+      run: ls  # Replace with actual Fastly deploy commands
 
