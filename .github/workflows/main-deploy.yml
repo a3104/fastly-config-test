@@ -20,5 +20,3 @@ jobs:
     - name: deploy to fastly
       run: ls; 
 
-	
-    
