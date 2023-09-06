@@ -10,10 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
+    env: # 環境変数としてシークレットを設定
+      TOKEN: ${{ secrets.TOKEN }}
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: diff
+      run: diff=`git diff`; echo $diff
+    
     - name: Install jq
       run: sudo apt update; sudo apt -y install jq curl
 
