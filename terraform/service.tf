@@ -1,3 +1,12 @@
+terraform {
+  backend "gcs" {
+    bucket  = "dxp_dev_int_fastly_terraform"
+    prefix  = "tf/test-abe/state"
+  }
+}
+
+
+
 resource "fastly_service_acl_entries" "generated_by_ip_block_list" {
    manage_entries = true
   acl_id     = each.value.acl_id

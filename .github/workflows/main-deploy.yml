@@ -11,6 +11,9 @@ jobs:
 
     env: # 環境変数としてシークレットを設定
       FASTLY_API_KEY: ${{ secrets.TOKEN }}
+    
+    env: # 環境変数としてシークレットを設定
+      GOOGLE_CREDENTIALS: ${{ secrets.GCSKEY }}
 
     steps:
     - name: Checkout code
@@ -35,4 +38,4 @@ jobs:
       run: pwd; cd /tmp/; wget  https://releases.hashicorp.com/terraform/1.4.5/terraform_1.4.5_linux_amd64.zip && unzip terraform_1.4.5_linux_amd64.zip && sudo mv terraform /usr/local/bin/; sudo chmod a+x /usr/local/bin/terraform
 
     - name: terraform apply
-      run: cd terraform && pwd; /usr/local/bin/terraform version; /usr/local/bin/terraform init; find . ;  /usr/local/bin/terraform apply -auto-approve && git commit -a -m "terraform apply" && git push
+      run: cd terraform && pwd; /usr/local/bin/terraform version; /usr/local/bin/terraform init; find . ;  /usr/local/bin/terraform apply -auto-approve 
