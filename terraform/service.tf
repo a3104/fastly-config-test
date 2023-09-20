@@ -5,7 +5,7 @@ resource "fastly_service_acl_entries" "generated_by_ip_block_list" {
 
   entry {
     comment = "test2"
-    ip      = "192.168.0.111"
+    ip      = "192.168.0.222"
     negated = false
   }
 
@@ -103,7 +103,7 @@ resource "fastly_service_vcl" "service" {
     initial           = 1
     method            = "HEAD"
     name              = "aaa"
-    path              = "/?a=b"
+    path              = "/?a=bc"
     threshold         = 1
     timeout           = 5000
     window            = 2
