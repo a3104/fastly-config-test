@@ -24,9 +24,9 @@ resource "fastly_service_acl_entries" "generated_by_ip_block_list2" {
 resource "fastly_service_vcl" "service" {
   activate = false
   default_host       = "tests.jaaku.org"
-  default_ttl        = 3600
+  default_ttl        = 7200
   http3              = true
-  name               = "testss.jaaku.org"
+  name               = "tests.jaaku.org"
   stale_if_error     = false
   stale_if_error_ttl = 43200
 
@@ -103,7 +103,7 @@ resource "fastly_service_vcl" "service" {
     initial           = 1
     method            = "HEAD"
     name              = "aaa"
-    path              = "/?a=bc"
+    path              = "/?a=bc&test=10"
     threshold         = 1
     timeout           = 5000
     window            = 2
