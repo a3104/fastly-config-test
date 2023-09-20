@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env: # 環境変数としてシークレットを設定
-      TOKEN: ${{ secrets.TOKEN }}
+      FASTLY_API_KEY: ${{ secrets.TOKEN }}
 
     steps:
     - name: Checkout code
@@ -29,8 +29,14 @@ jobs:
     #  run: echo "List of changed files: $changed_files"
 
     - name: Install jq
-      run: sudo apt update && sudo apt install -y jq curl
+      run: sudo apt update && sudo apt install -y jq curl wget unzip
+
+    - name: Get terraform
+      run: wget  https://releases.hashicorp.com/terraform/1.4.5/terraform_1.4.5_linux_amd64.zip && unzip terraform_1.4.5_linux_amd64.zip && sudo mv terraform /usr/local/bin/; chmod a+x /usr/local/bin/terraform
+
 
     - name: Deploy to fastly
       run: ls  # Replace with actual Fastly deploy commands
 
+    - name: terraform apply
+      run: cd terraform &&  /usr/local/bin/terraform apply -auto-approve
