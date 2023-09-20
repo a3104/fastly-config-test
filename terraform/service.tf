@@ -4,8 +4,8 @@ resource "fastly_service_acl_entries" "generated_by_ip_block_list" {
   service_id = fastly_service_vcl.service.id
 
   entry {
-    comment = "test"
-    ip      = "192.168.0.1"
+    comment = "test2"
+    ip      = "192.168.0.11"
     negated = false
   }
 
