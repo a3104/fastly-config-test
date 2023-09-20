@@ -14,7 +14,7 @@ resource "fastly_service_acl_entries" "generated_by_ip_block_list" {
 
   entry {
     comment = "test2"
-    ip      = "192.168.0.222"
+    ip      = "192.168.0.111"
     negated = false
   }
 
@@ -95,7 +95,7 @@ resource "fastly_service_vcl" "service" {
 
   header {
     action        = "set"
-    destination   = "http.zzzz"
+    destination   = "http.zzzzaaa"
     ignore_if_set = false
     name          = "header"
     priority      = 10
