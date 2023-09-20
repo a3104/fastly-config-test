@@ -11,8 +11,6 @@ jobs:
 
     env: # 環境変数としてシークレットを設定
       FASTLY_API_KEY: ${{ secrets.TOKEN }}
-    
-    env: # 環境変数としてシークレットを設定
       GOOGLE_CREDENTIALS: ${{ secrets.GCSKEY }}
 
     steps:
