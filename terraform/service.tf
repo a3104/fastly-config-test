@@ -1,6 +1,13 @@
 resource "fastly_service_acl_entries" "generated_by_ip_block_list" {
+   manage_entries = true
   acl_id     = each.value.acl_id
   service_id = fastly_service_vcl.service.id
+
+  entry {
+    comment = "test"
+    ip      = "192.168.0.1"
+    negated = false
+  }
 
   for_each = {
     for a in fastly_service_vcl.service.acl : a.name => a if a.name == "Generated_by_IP_block_list"
@@ -15,6 +22,7 @@ resource "fastly_service_acl_entries" "generated_by_ip_block_list2" {
   }
 }
 resource "fastly_service_vcl" "service" {
+  activate = false
   default_host       = "tests.jaaku.org"
   default_ttl        = 3600
   http3              = true
