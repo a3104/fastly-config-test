@@ -1,7 +1,7 @@
 resource "fastly_service_acl_entries" "generated_by_ip_block_list" {
    manage_entries = true
   acl_id     = each.value.acl_id
-  service_id = fastly_service_vcl.service.id
+  service_id = "HSJ21KnV9WHmi8T1h1lkh7"
 
   entry {
     comment = "test2"
