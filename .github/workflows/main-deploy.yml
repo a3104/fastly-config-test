@@ -39,4 +39,4 @@ jobs:
       run: ls  # Replace with actual Fastly deploy commands
 
     - name: terraform apply
-      run: cd terraform && pwd; /usr/local/bin/terraform init;  /usr/local/bin/terraform apply -auto-approve
+      run: cd terraform && pwd; /usr/local/bin/terraform version; /usr/local/bin/terraform init;  /usr/local/bin/terraform apply -auto-approve
