@@ -5,7 +5,7 @@ resource "fastly_service_acl_entries" "generated_by_ip_block_list" {
 
   entry {
     comment = "test2"
-    ip      = "192.168.0.11"
+    ip      = "192.168.0.111"
     negated = false
   }
 
