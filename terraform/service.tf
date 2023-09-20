@@ -26,7 +26,7 @@ resource "fastly_service_vcl" "service" {
   default_host       = "tests.jaaku.org"
   default_ttl        = 3600
   http3              = true
-  name               = "tests.jaaku.org"
+  name               = "testss.jaaku.org"
   stale_if_error     = false
   stale_if_error_ttl = 43200
 
